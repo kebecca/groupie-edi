@@ -1,0 +1,55 @@
+
+
+body {
+   margin: 15px;
+   background-image: url('https://img.freepik.com/free-vector/abstract-music-notes-design-music-background_206725-621.jpg?w=1380&t=st=1694084731~exp=1694085331~hmac=6cefd1b16bd921dbb1a48a6e51aead49980393cedb6a18afbe34d8ab5ab3f3ce');
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+}
+
+#titre {  
+   color: white;
+}
+
+span {
+   font-size: large;
+   font-weight: bold;
+}
+.container a {
+   text-decoration: none;
+   color: rgb(231, 191, 13);
+}
+.nom_group:hover {
+   color: rgb(255, 94, 0);
+   
+}
+
+#nom_projet {
+   text-align: center;
+}
+
+footer {
+   color: white;
+}
+
+#detail {
+   background-color: white;
+   color: brown;
+   margin: 10px;
+   text-align: center;
+}
+
+#nom_artist {
+   color: white;
+}
+
+footer {
+margin-top: 200px;
+}
+
+.row {
+   border-radius: 2px solid orange;
+   border-bottom: 4px;
+   
+}

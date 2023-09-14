@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <title>Groupie Tracker</title>
+  <style>
+   .wrapper {
+  width: 100%;
+  height: 100%;
+  background-size: 600% 100%;
+  animation: gradient 15s linear infinite;
+  animation-direction: alternate;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0%
+  }
+  100% {
+    background-position: 100%
+  }
+}
+ .navbar-brand {
+            color: white;
+        }
+    
+body, html {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-image: url('https://img.freepik.com/free-vector/abstract-music-notes-design-music-background_206725-621.jpg?w=1380&t=st=1694084731~exp=1694085331~hmac=6cefd1b16bd921dbb1a48a6e51aead49980393cedb6a18afbe34d8ab5ab3f3ce');
+
+}
+
+* {
+  margin: 0px 0px 0px 0px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 90vw;
+  max-width: 1000px;
+  height: 90vw;
+  max-height: 1000px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin-bottom: 10px;
+ 
+}
+
+.filter-inputs {
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+ .cb {
+   margin-bottom: 10px;
+  font-size: 22px;
+ }
+
+
+ button {
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(255, 255, 255);
+  border: 1px solid white;
+  height: 34px;
+  width: 130px;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 10px;
+  transition: 0.5s;
+}
+
+button:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+.artists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow: auto;
+  scrollbar-color: rgba(255, 255, 255, 0.8) rgba(255, 255, 255, 0.3);
+  scrollbar-width: thin;
+ 
+  
+}
+
+.artist {
+  width: 300px;
+  
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  margin: 0px 10px 20px 10px;
+}
+
+.cover {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.info {
+  overflow: auto;
+  color: white;
+  font-size: 16px;
+ 
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+a {
+  font-size: 22px;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+}
+
+.img {
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+@media all and (max-device-width: 1366px) {
+  .container {
+    padding: 10px;
+    justify-content: center;
+    height: 80vh;
+    overflow: scroll;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .artist {
+    width: 220px;
+  }
+}
+
+@media all and (max-device-width: 1200px) {
+  .wrapper {
+    display: none;
+  }
+  .container {
+    padding: 10px;
+    justify-content: center;
+    display: table;
+    height: 80vh;
+    overflow: scroll;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+  }
+  .artist {
+    width: 90vw;
+  }
+}
+footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .copyright {
+            font-size: 14px;
+        }
+  </style>
+</head>
+
+<body>
+   <CENTER><div class="container-fluid">
+           <a class="navbar-brand" href="#">
+             <img src="https://daily.jstor.org/wp-content/uploads/2023/01/good_times_with_bad_music_1050x700.jpg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+           <span> GROUPIE TRACKER </span> 
+           </a>
+         </div> </CENTER>
+
+    <div class="artists">
+      {{range .}}
+      <div class="artist">
+        <div class="cover"> <img class="img " src="{{.Image}}" alt=""> </div>
+        <div class="info">
+         <h5 class="card-title"><a class="nom_group" href="/artist?id={{ .Id }}">{{ .Name }}</a></h5> 
+         <p class="card-text">Numero d'identification: <span> {{.Id}} </span></p>
+          <p class="card-text">Date de Creation: <span> {{.CreationDate}} </span></p>
+          <p class="card-text">Date du premier Album:<span> {{.FirstAlbum}}</span></p>
+          <p class="card-text">Les membres du groupe: <span>{{len .Members}}</span></p>
+        </div>
+      </div>
+      {{end}}
+    </div>
+  </div>
+  <footer>
+   <div>
+      <div class="d-flex justify-content-center">
+       <div class="copyright">
+           <p style="margin: auto; position: relative; padding-top: 30px;">
+               @c copyright, Work by kedithre, chrcamara , alcmaomi...
+           </p>
+       </div>
+       </div>
+   </div>
+</footer>
+</body>
+
+</html>
+

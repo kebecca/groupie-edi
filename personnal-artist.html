@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"> 
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-image: url('https://img.freepik.com/free-vector/abstract-music-notes-design-music-background_206725-621.jpg?w=1380&t=st=1694084731~exp=1694085331~hmac=6cefd1b16bd921dbb1a48a6e51aead49980393cedb6a18afbe34d8ab5ab3f3ce');
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #ab92a0;
+            /*box-shadow: 0px 0px 10px rgba(167, 8, 133, 0.1);*/
+        }
+
+        .image {
+            text-align: center;
+        }
+
+        .cover {
+            max-width: 100%;
+            height: auto;
+        }
+
+        info {
+            padding: 20px;
+        }
+
+        .nametitle {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .infotitle {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .infotext {
+            margin-top: 5px;
+        }
+
+        .dates {
+            font-weight: bold;
+        }
+
+        .nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .link {
+            text-decoration: none;
+            color: #007BFF;
+            margin: 0 20px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .col {
+            flex: 1;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .copyright {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image">
+            <img class="cover" src="{{ .Artist.Image }}" alt="{{ .Artist.Name }}">
+        </div>
+        <div class="info">
+
+            <p class="nametitle">{{ .Artist.Name }}</p>
+            <p class="infotitle">Numero d'identification:<span>{{ .Artist.Id}}</span></p>
+            <p class="infotitle">Les membres du groupe:</p>
+            <p class="infotext">{{ range .Artist.Members }}{{.}} {{end}}</p>
+            <p class="infotitle">Date de Creation:</p>
+            <p class="dates">{{ .Artist.CreationDate }}</p>
+            <p class="infotitle">Date du premier Album:</p>
+            <p class="dates">{{ .Artist.FirstAlbum }}</p>
+        </div>
+        <div class="nav">
+            <a href="/accueil" class="link">Main</a>
+            <a href="https://groupietrackers.herokuapp.com/api" class="link">API</a>
+            <a href="https://github.com/kebecca" class="link">Author</a>
+        </div>
+        <div class="info">
+        <div class="row">
+            <div class="col">
+                Locations:
+            </div>
+            <div class="col">
+                <p>
+                    {{ range .Location.Locations }}
+                    <span>{{ . }}</span>
+                    {{ end }}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                Date de Concert:
+            </div>
+            <div class="col">
+                <p>
+                    {{ range .Date.Dates }}
+                    <span>{{ . }}</span>
+                    {{ end }}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                Relation:
+            </div>
+            <div class="col">
+                <p>
+                    {{ range .Relation.DatesLocations }}
+                    <span>{{ . }},  </span>
+                    {{end}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer>
+        <div class="d-flex justify-content-center">
+            <div class="copyright">
+                <p>
+                    © Copyright, Work by kedithre, chrcamara, alcmaomi...
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
